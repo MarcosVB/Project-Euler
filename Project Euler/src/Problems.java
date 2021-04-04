@@ -175,7 +175,7 @@ public class Problems {
 	}
 
 	// Problem 11 - What is the greatest product of n adjacent numbers in the same
-	// direction (up, down, left, right, or diagonally) in the 20×20 grid?
+	// direction (up, down, left, right, or diagonally) in the 20ï¿½20 grid?
 	public int LargestProductInAGrid(int n) {
 		String str = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 "
 				+ "49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 "
@@ -442,6 +442,17 @@ public class Problems {
 			}
 		}
 		return number;
+	}
+
+	// Problem 15 - How many such routes are there through a nÃ—n grid?
+	public long LatticePaths(int n, int i, int j) {
+		if (i < n)
+			if (j < n)
+				return LatticePaths(n, i + 1, j) + LatticePaths(n, i, j + 1);
+		if (j < n)
+			return LatticePaths(n, i, j + 1);
+
+		return 1;
 	}
 
 }
