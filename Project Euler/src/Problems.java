@@ -175,7 +175,7 @@ public class Problems {
 	}
 
 	// Problem 11 - What is the greatest product of n adjacent numbers in the same
-	// direction (up, down, left, right, or diagonally) in the 20�20 grid?
+	// direction (up, down, left, right, or diagonally) in the 20x20 grid?
 	public int LargestProductInAGrid(int n) {
 		String str = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 "
 				+ "49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 "
@@ -453,6 +453,35 @@ public class Problems {
 			return LatticePaths(n, i, j + 1);
 
 		return 1;
+	}
+
+	// Problem 16 - What is the sum of the digits of the number 2^1000?
+	public int PowerDigitSum(int a, int b) {
+		if (b == 0)
+			return 1;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		int sum, current, carry;
+		list.add(a); // a^1
+		for (int i = 1; i < b; i++) { // Loop repeating the process b-1 times
+			carry = 0;
+			for (int j = list.size() - 1; j >= 0; j--) { // Loop multiplying digit by digit
+				current = list.get(j) * a + carry;
+				if (current > 9) { // Current has two digits?
+					list.set(j, current % 10); // Add last digit to list
+					carry = current / 10; // Set carry to the first digit
+				} else {
+					list.set(j, current);
+					carry = 0;
+				}
+			}
+			if (carry > 0) // If carry still holds value add it to the beginning
+				list.add(0, carry);
+		}
+		sum = 0;
+		for (int i = 0; i < list.size(); i++)
+			sum += list.get(i);
+
+		return sum;
 	}
 
 }

@@ -42,8 +42,10 @@ public class Test {
 		// System.out.println(p.LargeSum());
 		// //Problem 14
 		// System.out.println(p.LongestCollatzSequence(1000000));
-		//Problem 15
-		System.out.println(p.LatticePaths(5, 0, 0));
+		// //Problem 15
+		// System.out.println(p.LatticePaths(20, 0, 0));
+		//Problem 16
+		System.out.println(p.PowerDigitSum(2, 1000));
 	}
 
 }
