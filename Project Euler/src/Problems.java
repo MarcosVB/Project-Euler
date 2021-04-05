@@ -457,22 +457,15 @@ public class Problems {
 
 	// Problem 16 - What is the sum of the digits of the number 2^1000?
 	public int PowerDigitSum(int a, int b) {
-		if (b == 0)
-			return 1;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		int sum, current, carry;
-		list.add(a); // a^1
-		for (int i = 1; i < b; i++) { // Loop repeating the process b-1 times
+		list.add(1); // a^0
+		for (int i = 0; i < b; i++) { // Loop repeating the process b times
 			carry = 0;
 			for (int j = list.size() - 1; j >= 0; j--) { // Loop multiplying digit by digit
 				current = list.get(j) * a + carry;
-				if (current > 9) { // Current has two digits?
-					list.set(j, current % 10); // Add last digit to list
-					carry = current / 10; // Set carry to the first digit
-				} else {
-					list.set(j, current);
-					carry = 0;
-				}
+				list.set(j, current % 10); // Add last digit to list
+				carry = current / 10; // Set carry to the first digit
 			}
 			if (carry > 0) // If carry still holds value add it to the beginning
 				list.add(0, carry);
