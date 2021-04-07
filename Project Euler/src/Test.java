@@ -45,7 +45,9 @@ public class Test {
 		// //Problem 15
 		// System.out.println(p.LatticePaths(20, 0, 0));
 		//Problem 16
-		System.out.println(p.PowerDigitSum(2, 1000));
+		// System.out.println(p.PowerDigitSum(2, 1000));
+		//Problem 17
+		System.out.println(p.NumberLetterCounts(1000));
 	}
 
 }

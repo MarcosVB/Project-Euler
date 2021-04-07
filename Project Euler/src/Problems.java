@@ -477,4 +477,35 @@ public class Problems {
 		return sum;
 	}
 
+	// Problem 17 - If all the numbers from 1 to 1000 (one thousand) inclusive were
+	// written out in words, how many letters would be used?
+	public int NumberLetterCounts(int n) {
+		int[] unit = { 3, 3, 5, 4, 4, 3, 5, 5, 4 }; // one, two, three
+		int[] special = { 6, 6, 8, 8, 7, 7, 9, 8, 8 }; // eleven, twelve, thirteen
+		int[] ten = { 3, 6, 6, 5, 5, 5, 7, 6, 6 }; // ten, twenty, thirty
+
+		int thd, hud, ted, und, count = 0;
+
+		for (int i = 1; i <= n; i++) {
+			thd = (i / 1000) % 10; // Thousand digit
+			hud = (i / 100) % 10; // Hundred digit
+			ted = (i / 10) % 10; // Ten digit
+			und = i % 10; // Unit digit
+
+			if (thd > 0)
+				count += unit[thd - 1] + 8; // thousand
+			if (hud > 0)
+				count += i % 100 == 0 ? unit[hud - 1] + 7 : unit[hud - 1] + 10; // hundred, hundred and
+			if (ted == 1 && und != 0) {
+				count += special[10 + und - 11];
+				continue;
+			}
+			if (ted > 0)
+				count += ten[ted - 1];
+			if (und > 0)
+				count += unit[und - 1];
+		}
+		return count;
+	}
+
 }
